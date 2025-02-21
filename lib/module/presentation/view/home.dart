@@ -14,7 +14,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String token = 'insert here your Fine-grained personal access token';
+  String token =
+      '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';
 
   bool isSetupLoaded = false;
 
