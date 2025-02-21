@@ -8,13 +8,13 @@ GetIt locator = GetIt.instance;
 
 class UserLocator {
   static void setupUserDependencies() {
-    if (locator.isRegistered<UserRemote>()) {
+    if (!locator.isRegistered<UserRemote>()) {
       locator.registerFactory(
         () => UserRemote(),
       );
     }
 
-    if (locator.isRegistered<UserRepository>()) {
+    if (!locator.isRegistered<UserRepository>()) {
       locator.registerFactory(
         () => UserRepository(
           locator.get<UserRemote>(),
@@ -36,7 +36,7 @@ class UserLocator {
   static void setupHomeDependencies() {
     UserLocator.setupUserDependencies();
 
-    if (locator.isRegistered<GetUserListUsecase>()) {
+    if (!locator.isRegistered<GetUserListUsecase>()) {
       locator.registerFactory(
         () => GetUserListUsecase(
           locator.get<UserRepository>(),
@@ -44,7 +44,7 @@ class UserLocator {
       );
     }
 
-    if (locator.isRegistered<HomeViewModel>()) {
+    if (!locator.isRegistered<HomeViewModel>()) {
       locator.registerFactory(
         () => HomeViewModel(),
       );

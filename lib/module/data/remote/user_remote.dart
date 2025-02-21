@@ -8,7 +8,9 @@ class UserRemote implements UserRemoteInterface {
   @override
   Future<List<UserModel>> getUserList({required String token}) async {
     final response = await dio.get('https://api.github.com/users');
-    print(response);
-    return [];
+    List<dynamic> responseList = response.data;
+    List<UserModel> list =
+        responseList.map<UserModel>((e) => UserModel.fromJson(e)).toList();
+    return list;
   }
 }
